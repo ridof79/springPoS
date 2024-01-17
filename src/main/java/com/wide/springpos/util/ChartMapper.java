@@ -10,12 +10,10 @@ import java.util.Map.Entry;
 import com.google.gson.Gson;
 import com.wide.springpos.dto.CashierDto;
 import com.wide.springpos.dto.ItemDto;
-import com.wide.springpos.model.Cashier;
-import com.wide.springpos.model.Item;
 
-public class ChartGenerator {
+public class ChartMapper {
 
-	public static String generateChartItem(Map<ItemDto, Integer> chartMap) {
+	public static String mapChartItem(Map<ItemDto, Integer> chartMap) {
 		Gson gsonObj = new Gson();
 
 		double total = 0;
@@ -35,7 +33,7 @@ public class ChartGenerator {
 		return gsonObj.toJson(list);
 	}
 	
-	public static String generateChartCashier(Map<CashierDto, Double> chartMap) {
+	public static String mapChartCashier(Map<CashierDto, Double> chartMap) {
 		Gson gsonObj = new Gson();
 
 		double total = 0;
@@ -55,7 +53,7 @@ public class ChartGenerator {
 		return gsonObj.toJson(list);
 	}
 
-	public static String generateChartPayment(Map<String, Double> paymentAmount) {
+	public static String mapChartPayment(Map<String, Double> paymentAmount) {
 		Gson gsonObj = new Gson();
 
 		List<Map<String, Object>> list = new ArrayList<>();

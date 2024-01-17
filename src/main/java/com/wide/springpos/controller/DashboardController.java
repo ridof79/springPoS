@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.wide.springpos.service.CashierService;
 import com.wide.springpos.service.SaleItemService;
-import com.wide.springpos.util.ChartGenerator;
+import com.wide.springpos.util.ChartMapper;
 import com.wide.springpos.util.GetUserDetail;
 
 @Controller
@@ -26,9 +26,9 @@ public class DashboardController {
 
 	@RequestMapping("/home")
     public String listSales(Model model) {
-		String itemChart = ChartGenerator.generateChartItem(saleItemService.findItemSoldQuantity());
-		String cashierChart = ChartGenerator.generateChartCashier(cashierService.findCashierTransaction());
-		String paymentAmountChart = ChartGenerator.generateChartPayment(paymentService.paymentAmount());
+		String itemChart = ChartMapper.mapChartItem(saleItemService.findItemSoldQuantity());
+		String cashierChart = ChartMapper.mapChartCashier(cashierService.findCashierTransaction());
+		String paymentAmountChart = ChartMapper.mapChartPayment(paymentService.paymentAmount());
 		model.addAttribute("itemChart", itemChart);
 		model.addAttribute("cashierChart", cashierChart);
 		model.addAttribute("paymentChart", paymentAmountChart);

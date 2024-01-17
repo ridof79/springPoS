@@ -15,8 +15,6 @@ import com.wide.springpos.dto.CashierDto;
 import com.wide.springpos.dto.ItemDto;
 import com.wide.springpos.dto.SaleDto;
 import com.wide.springpos.dto.SaleItemDto;
-import com.wide.springpos.model.Cashier;
-import com.wide.springpos.model.Sale;
 import com.wide.springpos.service.CashierService;
 import com.wide.springpos.service.ItemService;
 import com.wide.springpos.service.SaleService;
@@ -104,7 +102,7 @@ public class SaleController {
             model.addAttribute("saleId", saleDto.getSaleNumber());
             status.setComplete();
         } catch (PaymentException e) {
-            model.addAttribute("status", "insufficientCash");
+            model.addAttribute("status", e.getMessage());
             return "redirect:/sales";
         }
         return "redirect:/sales/receipt";

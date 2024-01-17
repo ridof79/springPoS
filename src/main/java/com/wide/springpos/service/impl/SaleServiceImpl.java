@@ -58,7 +58,7 @@ public class SaleServiceImpl implements SaleService {
 			Payment payment = new CashPayment(cashInHand);
 			setupPaymentAndSave(sale, saleDto, payment);
 		} else {
-			throw new PaymentException();
+			throw new PaymentException("insufficientCash");
 		}
 	}
 
